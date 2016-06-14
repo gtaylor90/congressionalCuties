@@ -9,13 +9,13 @@ var promise = $.getJSON('https://congress.api.sunlightfoundation.com/legislators
 
 // promise.then(createCard)
 
-setTimeout(function(){console.log(promise.readyState)}, 3000)
+setTimeout(function() { console.log(promise.readyState) }, 3000)
 
 // promise.then() takes as input a function, it queues up that function to run when the promise is fulfilled. 
 // when the promise is fulfilled (i.e. the data is ready), the promise (and not us) will invoke the function.
 
 
-var statesContainer = document.querySelector('#statesContainer')
+// var statesContainer = document.querySelector('#statesContainer')
 
 // function to test the data for debugging
 var hanldeData = function(apiResponse) {
@@ -33,62 +33,32 @@ var hanldeData = function(apiResponse) {
 }
 
 
+var containerNode = document.querySelector('#container')
 
 var createCard = function(apiResponse) {
     var legArray = apiResponse.results
     var repObj = {}
+    var newCard = ''
     for (var i = 0; i < legArray.length; i++) {
         var legObj = legArray[i]
+        console.log(legObj)
 
-        // var newDiv = document.createElement('div')
-        // newDiv.className = 'repResentative'
-        // console.log(newDiv)
-        // var ulNode = newDiv.createElement('ul')
-
-        // var firstName = legObj.first_name
-        // var lastName = legObj.last_name
-        // var stateName = legObj.state_name
-        // var titleName = legObj.title
-        // var partyName = legObj.party
-        // var	termEnd = legObj.term_end
-        // var webSite = legObj.website
-        // var email = legObj.oc_email
-        // var faceBook = legObj.facebook_id
-        // var twitterHandle = legObj.twitter_id
         var repObj = {
-            firstName: legObj.first_name,
-            lastName: legObj.last_name,
-            stateName: legObj.state_name,
-            titleName: legObj.title,
-            partyName: legObj.party,
-            webSite: legObj.website,
-            email: legObj.oc_email,
-            facebook: legObj.facebook_id,
-            twitter: legObj.twitter_id,
-            termEnd: legObj.term_end
-        }
-        // var listItems = ["email: " + email, "website: " + webSite, "facebook: " + faceBook, "twitter: " + twitterHandle]
-        // console.log(repObj)
-        // document.body.innerHTML = "<div class='rep'><h1>" +repObj.first_name + " " + repObj.last_name  + "</h1><h2>" + repObj.titleName + " " + repObj.partyName+ " "+ repObj.stateName + "</h2><ul> <li> email: " + repObj.email + "</li> <li> website: "+ repObj.webSite + "</li> <li> facebook: " + repObj.facebook + "</li> <li> twitter: " + repObj.twitter + "</li> </ul> <h3> term ending: " + repObj.termEnd + "</h3> </div>"
-        var newCard = ("<div class='rep'><h1>" +repObj.first_name + " " + repObj.last_name  + "</h1><h2>" + repObj.titleName + " " + repObj.partyName+ " "+ repObj.stateName + "</h2><ul> <li> email: " + repObj.email + "</li> <li> website: "+ repObj.webSite + "</li> <li> facebook: " + repObj.facebook + "</li> <li> twitter: " + repObj.twitter + "</li> </ul> <h3> term ending: " + repObj.termEnd + "</h3> </div>")
-        console.log(newCard)
-        // var nameNode = newDiv.createElement='h1'
-        // var ulNode = newDiv.createElement('ul')
-        // ulNode.appendChild('li').innerHTML = listItems
+                firstName: legObj.first_name,
+                lastName: legObj.last_name,
+                stateName: legObj.state_name,
+                titleName: legObj.title,
+                partyName: legObj.party,
+                webSite: legObj.website,
+                email: legObj.oc_email,
+                facebook: legObj.facebook_id,
+                twitter: legObj.twitter_id,
+                termEnd: legObj.term_end
+            }
 
-        // var subheadText = "<h2>" + titleName + " ~ " + partyName + " " + stateName "</h2>"
-
-        // var cardFoot = "<h3> term ending: " + termEnd + "</h3>"
-
-
-
-        // console.log(legObj.first_name)
-        // console.log(legObj.state)
-        // console.log(legObj.party)
-        // console.log(legObj.title)
-        // console.log(legObj.oc_email)
-        // console.log(legObj.term_end)
-        // document.querySelector('#container').c
+        var newCard = "<div class='rep'><h1>" + legObj.first_name + " " + legObj.last_name + "</h1><h2>" + repObj.titleName + " " + repObj.partyName + " " + repObj.stateName + "</h2><ul> <li> email: " + repObj.email + "</li> <li> website: " + repObj.webSite + "</li> <li> facebook: " + repObj.facebook + "</li> <li> twitter: " + repObj.twitter + "</li> </ul> <h3> term ending: " + repObj.termEnd + "</h3> </div>"
+        containerNode.innerHTML += newCard
+        // document.body.appendChild(z)
     }
 }
 
@@ -98,4 +68,4 @@ promise.then(createCard)
 // "<div class='repResentative'><h1>"Name"</h1><h2>"Rep P-State"</h2><ul> <li>"email:"</li> <li>"web:"</li> <li>"fb:"</li> <li>"tw:"</li> </ul> <h3>"term end:"</h3> </div>"
 
 
-promise.then(createCard)
+// promise.then(createCard)
