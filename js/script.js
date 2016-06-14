@@ -69,8 +69,9 @@ var createCard = function(apiResponse) {
         }
         // var listItems = ["email: " + email, "website: " + webSite, "facebook: " + faceBook, "twitter: " + twitterHandle]
         // console.log(repObj)
-        document.innerHTML = "<div class='repResentative'><h1>" +repObj.first_name + " " + repObj.last_name  + "</h1><h2>" + repObj.titleName + " " + repObj.partyName+ " "+ repObj.stateName + "</h2><ul> <li> email: " + repObj.email + "</li> <li> website: "+ repObj.webSite + "</li> <li> facebook: " + repObj.facebook + "</li> <li> twitter: " + repObj.twitter + "</li> </ul> <h3> term ending: " + repObj.termEnd + "</h3> </div>"
-
+        // document.body.innerHTML = "<div class='rep'><h1>" +repObj.first_name + " " + repObj.last_name  + "</h1><h2>" + repObj.titleName + " " + repObj.partyName+ " "+ repObj.stateName + "</h2><ul> <li> email: " + repObj.email + "</li> <li> website: "+ repObj.webSite + "</li> <li> facebook: " + repObj.facebook + "</li> <li> twitter: " + repObj.twitter + "</li> </ul> <h3> term ending: " + repObj.termEnd + "</h3> </div>"
+        var newCard = ("<div class='rep'><h1>" +repObj.first_name + " " + repObj.last_name  + "</h1><h2>" + repObj.titleName + " " + repObj.partyName+ " "+ repObj.stateName + "</h2><ul> <li> email: " + repObj.email + "</li> <li> website: "+ repObj.webSite + "</li> <li> facebook: " + repObj.facebook + "</li> <li> twitter: " + repObj.twitter + "</li> </ul> <h3> term ending: " + repObj.termEnd + "</h3> </div>")
+        console.log(newCard)
         // var nameNode = newDiv.createElement='h1'
         // var ulNode = newDiv.createElement('ul')
         // ulNode.appendChild('li').innerHTML = listItems
@@ -92,6 +93,7 @@ var createCard = function(apiResponse) {
 }
 
 
+promise.then(createCard)
 
 // "<div class='repResentative'><h1>"Name"</h1><h2>"Rep P-State"</h2><ul> <li>"email:"</li> <li>"web:"</li> <li>"fb:"</li> <li>"tw:"</li> </ul> <h3>"term end:"</h3> </div>"
 
